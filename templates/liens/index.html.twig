@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des liens{% endblock %}
+
+{% block body %}
+
+    <h2>Liste des liens</h2>
+    <ul>
+        {% for lien in liens %}
+            <li>
+                {{ lien.name|capitalize }} | Route name : {{ lien.path }}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
