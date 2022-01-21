@@ -42,27 +42,32 @@ class AppFixtures extends Fixture
 
         $liens = new Liens();
         $liens->setName("article");
-        $liens->setPath("'article_index'");
+        $liens->setPath("article_index");
+        $liens->setSubLink(false);
         $manager->persist($liens);
 
         $liens = new Liens();
         $liens->setName("créer un article");
-        $liens->setPath("'article_new'");
+        $liens->setPath("article_new");
+        $liens->setSubLink(true);
         $manager->persist($liens);
 
         $liens = new Liens();
         $liens->setName("catégorie");
-        $liens->setPath("'category_index'");
+        $liens->setPath("category_index");
+        $liens->setSubLink(false);
         $manager->persist($liens);
 
         $liens = new Liens();
         $liens->setName("créer une catégorie");
-        $liens->setPath("'category_new'");
+        $liens->setPath("category_new");
+        $liens->setSubLink(true);
         $manager->persist($liens);
 
         $liens = new Liens();
         $liens->setName("liste des liens");
-        $liens->setPath("'liens'");
+        $liens->setPath("liens");
+        $liens->setSubLink(false);
         $manager->persist($liens);
 
         $manager->flush();

@@ -19,6 +19,9 @@ class Liens
     #[ORM\Column(type: 'string', length: 255)]
     private $path;
 
+    #[ORM\Column(type: 'boolean', nullable: false)]
+    private $subLink;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class Liens
     public function setPath(string $path): self
     {
         $this->path = $path;
+
+        return $this;
+    }
+
+    public function getSubLink(): ?bool
+    {
+        return $this->subLink;
+    }
+
+    public function setSubLink(?bool $subLink): self
+    {
+        $this->subLink = $subLink;
 
         return $this;
     }

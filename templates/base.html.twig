@@ -13,44 +13,23 @@
     <body>
     	{% block header %}
 
-    		<!-- Essai menu normal fonctionnel -->
-	        <header>
-    			<h2>Menu normal</h2>
-	        	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-	    			<div class="collapse navbar-collapse">
-	    				<ul class="navbar-nav mr-auto">
-	    					<li class="nav-item">
-	    						<a class="nav-link" href="{{ path('article_index') }}">Article</a>
-	    						<ul class="navbar-nav mr-auto">
-	    							<li class="nav-item">
-	    								<a class="nav-link" href="{{ path('article_new') }}">Créer un article</a>
-	    							</li>
-	    						</ul>
-	    					</li>
-	    					<li class="nav-item">
-	    						<a class="nav-link" href="{{ path('category_index') }}">Catégorie</a>
-	    						<ul class="navbar-nav mr-auto">
-	    							<li class="nav-item">
-	    								<a class="nav-link" href="{{ path('category_new') }}">Créer une catégorie</a>
-	    							</li>
-	    						</ul>
-	    					</li>
-	    					<li class="nav-item">
-	    						<a class="nav-link" href="{{ path('liens') }}">Liste des liens</a>
-	    					</li>
-	    				</ul>
-	    			</div>
-	        	</nav>
-
     		<!-- Menu dynamique -->
-    			<br/>
-    			<h2>Menu dynamique</h2>
+	        <header>
 	        	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 			        <div class="collapse navbar-collapse">
 			            <ul class="navbar-nav mr-auto">
 			                {% for lien in liens %}
 			                    <li class="nav-item">
-			                        <a class="nav-link" href="#{#ne génère pas d'URL pour les routes -> { path(lien.path) }#}">{{ lien.name|capitalize }}</a>
+			                    	{% if lien.subLink == false %}
+			                        	<a class="nav-link" href="{{ path(lien.path) }}">{{ lien.name|capitalize }}</a>
+			                        {% endif %}
+			                        {% if lien.subLink == true %}
+				                        <ul class="navbar-nav mr-auto">
+				                        	<li class="nav-item">
+				                        		<a class="nav-link" href="{{ path(lien.path) }}">{{ lien.name|capitalize }}</a>
+				                        	</li>
+				                        </ul>
+			                        {% endif %}
 			                    </li>
 			                {% endfor %}
 			            </ul>
@@ -59,8 +38,41 @@
 	        </header>
 
         {% endblock %}
+
         <br/>
+
         {% block body %}{% endblock %}
+
+       	<br/><br/>
+
+       	<!-- Essai menu normal fonctionnel -->
+		<h6>--> Modèle menu dynamque (menu normal)</h6>
+    	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('article_index') }}">Article</a>
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('article_new') }}">Créer un article</a>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('category_index') }}">Catégorie</a>
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('category_new') }}">Créer une catégorie</a>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('liens') }}">Liste des liens</a>
+					</li>
+				</ul>
+			</div>
+    	</nav>
+
         {% block javascripts %}
 		
 			<!-- JS Bootstrap -->
