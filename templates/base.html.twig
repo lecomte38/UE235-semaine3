@@ -23,13 +23,13 @@
 			                    	{% if lien.subLink == false %}
 			                        	<a class="nav-link" href="{{ path(lien.path) }}">{{ lien.name|capitalize }}</a>
 			                        {% endif %}
-			                        {% if lien.subLink == true %}
-				                        <ul class="navbar-nav mr-auto">
-				                        	<li class="nav-item">
-				                        		<a class="nav-link" href="{{ path(lien.path) }}">{{ lien.name|capitalize }}</a>
-				                        	</li>
-				                        </ul>
-			                        {% endif %}
+			                        	<ul class="navbar-nav mr-auto">
+					                        {% if lien.subLink == true %}
+						                        <li class="nav-item">
+						                        	<a class="nav-link" href="{{ path(lien.path) }}">{{ lien.name|capitalize }}</a>
+						                        </li>
+					                        {% endif %}
+			                        	</ul>
 			                    </li>
 			                {% endfor %}
 			            </ul>
